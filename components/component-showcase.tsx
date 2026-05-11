@@ -17,13 +17,13 @@ import { ShoppingCart, Mail, Search, Bell, Heart, Star, ChevronRight, Github, Us
  */
 export function ComponentShowcase() {
   return (
-    <section className="container mx-auto ~px-4/8 ~py-24/40 space-y-32">
+    <section className="container mx-auto px-4 md:px-8 py-20 md:py-32 space-y-24">
       <div className="flex flex-col items-center text-center space-y-6">
         <Badge variant="outline" className="px-6 py-1.5 rounded-full border-primary/20 text-primary text-sm font-medium">
           Design System
         </Badge>
-        <h2 className="~text-4xl/6xl font-bold tracking-tight">Modular Component Library</h2>
-        <p className="text-muted-foreground max-w-2xl ~text-lg/xl">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Modular Component Library</h2>
+        <p className="text-muted-foreground max-w-2xl text-lg md:text-xl">
           A showcase of our premium, reusable components that power this e-commerce experience.
         </p>
       </div>

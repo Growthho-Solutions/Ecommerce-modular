@@ -7,15 +7,15 @@ import { ArrowRight } from "lucide-react";
  */
 export function Hero() {
   return (
-    <div className="relative overflow-hidden bg-muted/50 ~py-24/32">
-      <div className="container mx-auto ~px-4/8 relative z-10">
+    <div className="relative overflow-hidden bg-muted/50 py-20 md:py-32">
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-2xl">
           <Badge className="mb-6 px-3 py-1 text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary border-none">
             New Summer Collection 2026
           </Badge>
           
-          <h1 className="~text-5xl/7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-            Elevate Your <span className="text-gradient">Style</span> With Purpose.
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+            Elevate Your <span className="text-primary">Style</span> With Purpose.
           </h1>
           
           <p className="text-lg text-muted-foreground mb-10 max-w-lg leading-relaxed">
