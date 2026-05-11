@@ -1,0 +1,6 @@
+packages:
+  - 'ecomm-starter'
+  - 'ecomm-admin'
+allowBuilds:
+  '0': sharp
+  '1': unrs-resolver
