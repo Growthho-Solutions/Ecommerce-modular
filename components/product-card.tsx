@@ -30,7 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
   }).format(product.price);
 
   return (
-    <Card className="group overflow-hidden flex flex-col h-full border-none bg-card shadow-sm hover-lift ring-1 ring-border/50">
+    <Card className="group overflow-hidden flex flex-col h-full border-none bg-card shadow-sm hover-lift ring-1 ring-border/50 rounded-[2rem]">
       {/* Product Image Wrapper */}
       <div className="relative aspect-[4/5] overflow-hidden bg-muted">
         {product.image_url ? (
@@ -62,14 +62,14 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Info */}
-      <CardHeader className="p-4 pb-1">
+      <CardHeader className="~p-4/6 pb-2">
         <CardTitle className="text-base font-semibold line-clamp-1 group-hover:text-primary transition-colors">
           {product.name}
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="p-4 pt-0 flex-1">
-        <p className="text-sm text-muted-foreground line-clamp-2 mt-1 mb-3 min-h-[2.5rem]">
+      <CardContent className="~px-4/6 pt-0 flex-1">
+        <p className="text-sm text-muted-foreground line-clamp-2 mt-1 mb-4 min-h-[2.5rem] leading-relaxed">
           {product.description}
         </p>
         <div className="flex items-center justify-between mt-auto">
@@ -80,8 +80,8 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardContent>
 
       {/* Action Button */}
-      <CardFooter className="p-4 pt-0">
-        <Button className="w-full h-10 rounded-full font-medium transition-all" variant="default">
+      <CardFooter className="~p-4/6 pt-0">
+        <Button className="w-full h-11 rounded-full font-medium transition-all shadow-sm hover:shadow-md" variant="default">
           <ShoppingCart className="mr-2 h-4 w-4" />
           Add to Cart
         </Button>

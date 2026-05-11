@@ -12,7 +12,7 @@ import { AuthButton } from "./auth-button";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b glass">
-      <div className="container mx-auto flex h-16 items-center justify-between ~px-4/8">
+      <div className="container mx-auto flex ~h-16/20 items-center justify-between ~px-4/8">
         {/* Logo and Desktop Nav */}
         <div className="flex items-center ~gap-6/12">
           <Link href="/" className="flex items-center space-x-2">
