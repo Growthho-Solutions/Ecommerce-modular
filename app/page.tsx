@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { ComponentShowcase } from "@/components/component-showcase";
 import { ProductList } from "@/components/product-list";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -50,6 +51,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Component Showcase Section */}
+        <ComponentShowcase />
       </main>
 
       <Footer />
