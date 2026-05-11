@@ -4,6 +4,8 @@ import { InfoIcon, User, Key, Settings } from "lucide-react";
 import { Suspense } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+export const dynamic = "force-dynamic";
+
 /**
  * Fetch and display user details.
  */
