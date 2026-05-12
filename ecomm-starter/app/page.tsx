@@ -1,10 +1,9 @@
 import { Hero } from "@/components/hero";
 import { ComponentShowcase } from "@/components/component-showcase";
-import { ProductList, ProductListSkeleton, DatabaseWarning } from "@/components/product-list";
+import { ProductList, ProductListSkeleton } from "@/components/product-list";
 import { BrandPromise } from "@/components/brand-promise";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { hasEnvVars } from "@/lib/utils";
 import { Suspense } from "react";
 
 /**
@@ -28,13 +27,9 @@ export default function Home() {
             </p>
           </div>
 
-          {hasEnvVars ? (
-            <Suspense fallback={<ProductListSkeleton />}>
-              <ProductList />
-            </Suspense>
-          ) : (
-            <DatabaseWarning />
-          )}
+          <Suspense fallback={<ProductListSkeleton />}>
+            <ProductList />
+          </Suspense>
         </section>
 
         <BrandPromise />

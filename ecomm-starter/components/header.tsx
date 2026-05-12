@@ -24,12 +24,12 @@ interface NavItem {
 const NAV_LINKS: NavItem[] = [
   { 
     label: "Shop", 
-    href: "/shop",
+    href: "/products",
     subItems: [
-      { label: "All Products", href: "/shop", description: "Browse our entire collection" },
-      { label: "New Arrivals", href: "/shop/new", description: "Freshly added items" },
-      { label: "Best Sellers", href: "/shop/popular", description: "Our most loved products" },
-      { label: "On Sale", href: "/shop/sale", description: "Great deals at low prices" },
+      { label: "All Products", href: "/products", description: "Browse our entire collection" },
+      { label: "New Arrivals", href: "/products?filter=new", description: "Freshly added items" },
+      { label: "Best Sellers", href: "/products?filter=popular", description: "Our most loved products" },
+      { label: "On Sale", href: "/products?filter=sale", description: "Great deals at low prices" },
     ]
   },
   { 
@@ -162,11 +162,13 @@ function IconButton({ children, className, onClick }: { children: React.ReactNod
  */
 function CartButton() {
   return (
-    <Button variant="ghost" size="icon" className="relative group h-9 w-9">
-      <ShoppingCart className="h-5 w-5 transition-transform group-hover:scale-110" />
-      <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
-        0
-      </span>
-    </Button>
+    <Link href="/cart">
+      <Button variant="ghost" size="icon" className="relative group h-9 w-9">
+        <ShoppingCart className="h-5 w-5 transition-transform group-hover:scale-110" />
+        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
+          2
+        </span>
+      </Button>
+    </Link>
   );
 }
