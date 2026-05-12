@@ -49,6 +49,22 @@ The above will also clone the Starter kit to your GitHub, you can clone that loc
 
 If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
 
+## Production Deployment
+
+To push your changes to production on Vercel:
+
+### Using Git (Recommended)
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
+
+### Using Vercel CLI
+```bash
+vercel --prod
+```
+
 ## Clone and run locally
 
 1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)

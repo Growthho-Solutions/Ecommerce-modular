@@ -125,7 +125,7 @@ function NavDropdown({ link }: { link: NavItem }) {
             "bg-background border rounded-2xl shadow-2xl p-5 min-w-[260px] ring-1 ring-black/5",
             link.columns === 2 ? "md:min-w-[520px] grid grid-cols-2 gap-2" : "flex flex-col gap-1"
           )}>
-            {link.subItems.map((subItem) => (
+            {link.subItems?.map((subItem) => (
               <Link 
                 key={subItem.href}
                 href={subItem.href}
