@@ -59,7 +59,7 @@
 - [x] 5.4 Implement basic localization logic (formatting integer cents to the store's `base_currency`).
 
 ### Phase 6: Storefront Shopping Experience
-- [ ] 6.1 Create Home Page (Hero section, featured products).
+- [x] 6.1 Create Home Page (Hero section, featured products).
 - [ ] 6.2 Create Products Listing page with basic pagination.
 - [ ] 6.3 Implement text-based Search functionality on the Products page.
 - [ ] 6.4 Create Product Detail page (showing variant selector, images).

@@ -1,91 +1,61 @@
-import Image from "next/image";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ShoppingCart } from "lucide-react";
-
-interface Product {
-  id: string;
-  name: string;
-  description: string | null;
-  price: number;
-  image_url: string | null;
-  category: string | null;
-  stock_quantity: number;
-}
+import Link from "next/link";
+import { ShoppingBag, Eye } from "lucide-react";
+import { formatCurrency } from "@/lib/store-utils";
 
 interface ProductCardProps {
-  product: Product;
+  product: any;
 }
 
-/**
- * Individual Product Card component.
- * Displays product image, details, and an "Add to Cart" action.
- * Features premium hover effects and responsive image sizing.
- */
 export function ProductCard({ product }: ProductCardProps) {
-  const formattedPrice = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(product.price);
+  // Get the lowest price from variants
+  const prices = product.product_variants?.map((v: any) => v.price) || [];
+  const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+  const mainImage = product.product_images?.[0]?.image_url;
 
   return (
-    <Card className="group overflow-hidden flex flex-col h-full border-none bg-card shadow-sm hover-lift ring-1 ring-border/50 rounded-[2rem]">
-      {/* Product Image Wrapper */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-        {product.image_url ? (
-          <Image
-            src={product.image_url}
-            alt={product.name}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+    <div className="group relative bg-white dark:bg-[#12141c] rounded-[2rem] overflow-hidden border border-border/50 hover:shadow-2xl hover:shadow-blue-600/5 transition-all duration-500">
+      <Link href={`/products/${product.id}`} className="block aspect-[4/5] overflow-hidden relative">
+        {mainImage ? (
+          <img 
+            src={mainImage} 
+            alt={product.name} 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-muted-foreground text-[10px] font-medium uppercase tracking-widest px-4 text-center">
-            No Image Available
+          <div className="w-full h-full bg-slate-100 dark:bg-white/5 flex items-center justify-center text-muted-foreground italic text-xs uppercase tracking-widest">
+            No Image
           </div>
         )}
         
-        {/* Category Badge */}
-        {product.category && (
-          <Badge 
-            className="absolute top-3 left-3 bg-background/80 backdrop-blur-sm text-foreground hover:bg-background border-none shadow-sm" 
-            variant="outline"
-          >
-            {product.category}
-          </Badge>
-        )}
-        
-        {/* Subtle overlay on hover */}
-        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
-
-      {/* Product Info */}
-      <CardHeader className="~p-4/6 pb-2">
-        <CardTitle className="text-base font-semibold line-clamp-1 group-hover:text-primary transition-colors">
-          {product.name}
-        </CardTitle>
-      </CardHeader>
-
-      <CardContent className="~px-4/6 pt-0 flex-1">
-        <p className="text-sm text-muted-foreground line-clamp-2 mt-1 mb-4 min-h-[2.5rem] leading-relaxed">
-          {product.description}
-        </p>
-        <div className="flex items-center justify-between mt-auto">
-          <p className="text-lg font-bold tracking-tight">
-            {formattedPrice}
-          </p>
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3">
+           <div className="w-12 h-12 rounded-2xl bg-white text-black flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-[50ms]">
+             <Eye className="h-5 w-5" />
+           </div>
+           <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-[100ms]">
+             <ShoppingBag className="h-5 w-5" />
+           </div>
         </div>
-      </CardContent>
+      </Link>
 
-      {/* Action Button */}
-      <CardFooter className="~p-4/6 pt-0">
-        <Button className="w-full h-11 rounded-full font-medium transition-all shadow-sm hover:shadow-md" variant="default">
-          <ShoppingCart className="mr-2 h-4 w-4" />
-          Add to Cart
-        </Button>
-      </CardFooter>
-    </Card>
+      <div className="p-6 space-y-2">
+        <div className="flex items-center justify-between">
+          <Link href={`/products/${product.id}`}>
+            <h3 className="font-bold text-lg tracking-tight hover:text-blue-600 transition-colors">{product.name}</h3>
+          </Link>
+          <span className="font-black text-blue-600">{formatCurrency(minPrice)}</span>
+        </div>
+        <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+          {product.description || "No description available for this premium item."}
+        </p>
+        
+        <div className="pt-4 flex flex-wrap gap-1.5">
+          {product.product_tags?.slice(0, 2).map((pt: any) => (
+            <span key={pt.tag_id} className="text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-muted-foreground">
+              {pt.tags?.name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
