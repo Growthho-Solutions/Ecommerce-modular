@@ -107,5 +107,8 @@ export async function processCheckout(formData: FormData, cartItems: any[]) {
     await supabase.from("cart_items").delete().eq("cart_id", cart.id);
   }
 
+  // Mock Email (Requirement 100)
+  console.log(`[MOCK EMAIL] Order Confirmation sent to customer ${customerId} for Order #${order.id}`);
+
   return { success: true, orderId: order.id };
 }
