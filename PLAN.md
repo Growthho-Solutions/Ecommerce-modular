@@ -67,7 +67,7 @@
 
 ### Phase 7: Storefront Checkout & Auth
 - [x] 7.1 Create Cart slide-out/page (view items, change quantity, remove).
-- [ ] 7.2 Implement Cart persistence logic (sync Zustand to `carts` table).
+- [x] 7.2 Implement Cart persistence logic (sync Zustand to `carts` table).
 - [x] 7.3 Create Custom Credentials Login/Signup page for Customers (interacting with the `customers` table, not global Auth).
 - [ ] 7.4 Implement Customer Password Reset flow (generating tokens and sending emails).
 - [ ] 7.5 Create Customer Profile page (Address Book management).

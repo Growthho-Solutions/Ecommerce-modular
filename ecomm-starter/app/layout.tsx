@@ -22,12 +22,16 @@ const geistSans = Geist({
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "sonner";
+import { getCustomerSession } from "@/lib/customer-auth";
+import { CartSync } from "@/components/cart-sync";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getCustomerSession();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased bg-white dark:bg-[#0a0a0a]`}>
@@ -38,6 +42,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
+            <CartSync customerId={session?.customer?.id} />
             <Header />
             <main className="flex-grow">
               {children}
