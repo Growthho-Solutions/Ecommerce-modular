@@ -66,7 +66,7 @@
 - [x] 6.5 Connect "Add to Cart" button to Zustand store.
 
 ### Phase 7: Storefront Checkout & Auth
-- [ ] 7.1 Create Cart slide-out/page (view items, change quantity, remove).
+- [x] 7.1 Create Cart slide-out/page (view items, change quantity, remove).
 - [ ] 7.2 Implement Cart persistence logic (sync Zustand to `carts` table).
 - [ ] 7.3 Create Custom Credentials Login/Signup page for Customers (interacting with the `customers` table, not global Auth).
 - [ ] 7.4 Implement Customer Password Reset flow (generating tokens and sending emails).
