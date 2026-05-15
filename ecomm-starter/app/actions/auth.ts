@@ -87,3 +87,64 @@ export async function customerLogout() {
   await logout();
   redirect("/login");
 }
+
+export async function requestPasswordReset(formData: FormData) {
+  const email = formData.get("email") as string;
+  const storeId = getStoreId();
+  const supabase = await createClient();
+
+  const { data: customer } = await supabase
+    .from("customers")
+    .select("id")
+    .eq("email", email)
+    .eq("store_id", storeId)
+    .single();
+
+  if (!customer) {
+    // Return success anyway to prevent email enumeration
+    return { success: true };
+  }
+
+  const token = Math.random().toString(36).substring(2, 15);
+  const expiresAt = new Date(Date.now() + 3600000).toISOString(); // 1 hour
+
+  await supabase.from("password_reset_tokens").insert({
+    customer_id: customer.id,
+    token,
+    expires_at: expiresAt
+  });
+
+  // Mock Email Sending
+  console.log(`[MOCK EMAIL] Password reset for ${email}: /reset-password?token=${token}`);
+
+  return { success: true };
+}
+
+export async function resetPassword(formData: FormData) {
+  const token = formData.get("token") as string;
+  const password = formData.get("password") as string;
+  const supabase = await createClient();
+
+  const { data: resetToken, error: tokenError } = await supabase
+    .from("password_reset_tokens")
+    .select("*, customers(*)")
+    .eq("token", token)
+    .gt("expires_at", new Date().toISOString())
+    .single();
+
+  if (tokenError || !resetToken) {
+    return { error: "Invalid or expired token" };
+  }
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  
+  await supabase
+    .from("customers")
+    .update({ password_hash: passwordHash })
+    .eq("id", resetToken.customer_id);
+
+  // Cleanup token
+  await supabase.from("password_reset_tokens").delete().eq("id", resetToken.id);
+
+  return { success: true };
+}
