@@ -41,8 +41,8 @@
 ### Phase 3: Admin Product Management
 - [x] 3.1 Create Tags management UI (Create/Delete tags).
 - [x] 3.2 Create Products list view (table with pagination).
-- [ ] 3.3 Create Product Creation form (basic details).
-- [ ] 3.4 Add Product Variants management to Product form (SKU, price, stock).
+- [x] 3.3 Create Product Creation form (basic details).
+- [x] 3.4 Add Product Variants management to Product form (SKU, price, stock).
 - [ ] 3.5 Implement Supabase Storage upload for Product Images.
 - [ ] 3.6 Create simple Discount Codes management page (Create/Deactivate).
 
