@@ -23,7 +23,7 @@
 - [x] 1.1 Create migration for `stores` table and basic RLS policies.
 - [x] 1.2 Create migration for `user_roles` table (mapping Auth users to roles/stores).
 - [x] 1.3 Create migration for `products`, `product_variants`, and `product_images`.
-- [ ] 1.4 Create migration for `tags` and `product_tags`.
+- [x] 1.4 Create migration for `tags` and `product_tags`.
 - [ ] 1.5 Create migration for `customers`, `customer_addresses`, and `password_reset_tokens` (custom auth implementation).
 - [ ] 1.6 Create migration for `carts` and `cart_items`.
 - [ ] 1.7 Create migration for `discounts`.
