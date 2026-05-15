@@ -33,6 +33,7 @@ export function Sidebar({ className, role }: SidebarProps) {
     { label: "Dashboard", href: "/", icon: LayoutDashboard, roles: ["superadmin", "manager"] },
     { label: "Stores", href: "/stores", icon: Store, roles: ["superadmin"] },
     { label: "Products", href: "/products", icon: Package, roles: ["manager"] },
+    { label: "Tags", href: "/tags", icon: Package, roles: ["manager"] },
     { label: "Orders", href: "/orders", icon: ShoppingCart, roles: ["manager"] },
     { label: "Customers", href: "/customers", icon: Users, roles: ["manager"] },
     { label: "Analytics", href: "/analytics", icon: BarChart3, roles: ["superadmin", "manager"] },

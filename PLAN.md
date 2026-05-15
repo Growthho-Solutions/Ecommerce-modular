@@ -39,7 +39,7 @@
 - [x] 2.6 Create "Store Configuration" page for Managers to update Name, Logo, Currency.
 
 ### Phase 3: Admin Product Management
-- [ ] 3.1 Create Tags management UI (Create/Delete tags).
+- [x] 3.1 Create Tags management UI (Create/Delete tags).
 - [ ] 3.2 Create Products list view (table with pagination).
 - [ ] 3.3 Create Product Creation form (basic details).
 - [ ] 3.4 Add Product Variants management to Product form (SKU, price, stock).
