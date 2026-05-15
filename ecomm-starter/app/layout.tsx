@@ -21,6 +21,7 @@ const geistSans = Geist({
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { CookieConsent } from "@/components/cookie-consent";
 import { Toaster } from "sonner";
 import { getCustomerSession } from "@/lib/customer-auth";
 import { CartSync } from "@/components/cart-sync";
@@ -48,6 +49,7 @@ export default async function RootLayout({
               {children}
             </main>
             <Footer />
+            <CookieConsent />
           </div>
           <Toaster position="bottom-right" />
         </ThemeProvider>
