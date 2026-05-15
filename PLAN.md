@@ -32,7 +32,7 @@
 
 ### Phase 2: Central Admin Setup (`ecomm-admin`)
 - [x] 2.1 Set up Supabase SSR authentication utility files.
-- [ ] 2.2 Create Admin Login page (`/login`).
+- [x] 2.2 Create Admin Login page (`/login`).
 - [ ] 2.3 Create Protected Route Layout (verifying `user_roles`).
 - [ ] 2.4 Create Growthho Superadmin Dashboard (overview metrics).
 - [ ] 2.5 Create Store Manager Dashboard (metrics scoped to `store_id`).
