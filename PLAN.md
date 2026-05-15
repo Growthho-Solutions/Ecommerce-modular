@@ -77,7 +77,7 @@
 - [x] 7.9 Implement Order creation transaction (move cart items to order items, deduct stock).
 
 ### Phase 8: Polish & Finalization
-- [ ] 8.1 Add standard `robots.txt` and dynamic `sitemap.xml` to `ecomm-starter`.
+- [x] 8.1 Add standard `robots.txt` and dynamic `sitemap.xml` to `ecomm-starter`.
 - [ ] 8.2 Add simple API rate-limiting middleware to `ecomm-admin` and `ecomm-starter`.
 - [ ] 8.3 Verify all RLS policies are strictly enforcing multi-tenant isolation.
 - [ ] 8.4 Perform final end-to-end testing of the complete checkout flow.
