@@ -25,7 +25,7 @@
 - [x] 1.3 Create migration for `products`, `product_variants`, and `product_images`.
 - [x] 1.4 Create migration for `tags` and `product_tags`.
 - [x] 1.5 Create migration for `customers`, `customer_addresses`, and `password_reset_tokens` (custom auth implementation).
-- [ ] 1.6 Create migration for `carts` and `cart_items`.
+- [x] 1.6 Create migration for `carts` and `cart_items`.
 - [ ] 1.7 Create migration for `discounts`.
 - [ ] 1.8 Create migration for `orders` and `order_items`.
 - [ ] 1.9 Write a basic seed script to populate test data (1 Admin, 1 Manager, 1 Store, some products).
