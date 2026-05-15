@@ -53,10 +53,10 @@
 - [x] 4.4 Refine Dashboard Analytics with live data (AOV, LTV, total revenue).
 
 ### Phase 5: Storefront Infrastructure (`ecomm-starter`)
-- [ ] 5.1 Configure `NEXT_PUBLIC_STORE_ID` in `.env.local` and create a centralized DB client that automatically passes this ID to all queries.
+- [x] 5.1 Configure `NEXT_PUBLIC_STORE_ID` in `.env.local` and create a centralized DB client that automatically passes this ID to all queries.
 - [ ] 5.2 Set up Zustand store for the Shopping Cart.
 - [ ] 5.3 Create global Layout with Navigation Header (Cart icon) and Footer.
-- [ ] 5.4 Implement basic localization logic (formatting integer cents to the store's `base_currency`).
+- [x] 5.4 Implement basic localization logic (formatting integer cents to the store's `base_currency`).
 
 ### Phase 6: Storefront Shopping Experience
 - [ ] 6.1 Create Home Page (Hero section, featured products).
