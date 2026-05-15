@@ -19,6 +19,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,14 +30,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+      <body className={`${geistSans.className} antialiased bg-white dark:bg-[#0a0a0a]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+          <Toaster position="bottom-right" />
         </ThemeProvider>
       </body>
     </html>
