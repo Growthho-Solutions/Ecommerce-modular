@@ -81,7 +81,7 @@
 ### Phase 10: Admin Operations & Scaling
 - [x] 10.1 Build Superadmin Store Provisioning UI (Create Stores/Managers).
 - [ ] 10.2 Implement Bulk CSV Import for products in the Admin panel.
-- [ ] 10.3 Implement soft-delete logic across Admin UI (Products/Orders).
+- [x] 10.3 Implement soft-delete logic across Admin UI (Products/Orders).
 - [ ] 10.4 Implement automated transactional email triggers (Order Confirmation).
 
 ### Phase 11: Compliance & Localization
