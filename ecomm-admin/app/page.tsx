@@ -1,13 +1,13 @@
 import { Sidebar } from "@/components/sidebar";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { products, orders, customers } from "@/lib/mock-data";
-import { 
-  BarChart3, 
-  Package, 
-  ShoppingCart, 
-  Users, 
-  ArrowUpRight, 
-  ArrowDownRight 
+import { products, orders } from "@/lib/mock-data";
+import { cn } from "@/lib/utils";
+import {
+  BarChart3,
+  ShoppingCart,
+  Users,
+  ArrowUpRight,
+  ArrowDownRight
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -112,6 +112,3 @@ export default function DashboardPage() {
   );
 }
 
-function cn(...inputs: (string | undefined | null | false)[]) {
-  return inputs.filter(Boolean).join(" ");
-}
