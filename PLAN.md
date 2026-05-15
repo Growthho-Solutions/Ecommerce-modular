@@ -85,7 +85,7 @@
 - [ ] 10.4 Implement automated transactional email triggers (Order Confirmation).
 
 ### Phase 11: Compliance & Localization
-- [ ] 11.1 Create dynamic Terms of Service & Privacy Policy pages for storefronts.
+- [x] 11.1 Create dynamic Terms of Service & Privacy Policy pages for storefronts.
 - [ ] 11.2 Implement a Cookie Consent banner for the storefront.
 - [ ] 11.3 Audit and finalize i18n support for the starter template.
 
