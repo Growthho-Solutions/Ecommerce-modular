@@ -62,8 +62,8 @@
 - [x] 6.1 Create Home Page (Hero section, featured products).
 - [x] 6.2 Create Products Listing page with basic pagination.
 - [x] 6.3 Implement text-based Search functionality on the Products page.
-- [ ] 6.4 Create Product Detail page (showing variant selector, images).
-- [ ] 6.5 Connect "Add to Cart" button to Zustand store.
+- [x] 6.4 Create Product Detail page (showing variant selector, images).
+- [x] 6.5 Connect "Add to Cart" button to Zustand store.
 
 ### Phase 7: Storefront Checkout & Auth
 - [ ] 7.1 Create Cart slide-out/page (view items, change quantity, remove).
