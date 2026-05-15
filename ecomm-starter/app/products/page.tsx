@@ -1,36 +1,54 @@
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { products } from "@/lib/mock-data";
-import { ProductCard } from "@/components/product-card";
+import { createClient } from "@/lib/supabase/server";
+import { getStoreId } from "@/lib/store-utils";
+import { ProductsGrid } from "@/components/products-grid";
 
-export default function ProductsPage() {
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: { q?: string; category?: string };
+}) {
+  const supabase = await createClient();
+  const storeId = getStoreId();
+  const query = searchParams.q || "";
+
+  let supabaseQuery = supabase
+    .from("products")
+    .select(`
+      *,
+      product_variants (price),
+      product_images (image_url),
+      product_tags (tag_id, tags (name))
+    `)
+    .eq("store_id", storeId)
+    .eq("is_active", true)
+    .order("created_at", { ascending: false });
+
+  if (query) {
+    supabaseQuery = supabaseQuery.ilike("name", `%${query}%`);
+  }
+
+  const { data: products } = await supabaseQuery;
+
+  // Also fetch tags for filtering
+  const { data: tags } = await supabase
+    .from("tags")
+    .select("*")
+    .eq("store_id", storeId);
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1 container mx-auto px-4 md:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">All Products</h1>
-            <p className="text-muted-foreground mt-1">
-              Browse our complete collection of premium items.
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <select className="bg-background border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20">
-              <option>Sort by: Newest</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-            </select>
-          </div>
-        </div>
+    <div className="container mx-auto px-6 py-12 space-y-12">
+      <div className="space-y-4">
+        <h1 className="text-5xl font-black tracking-tighter">Shop All</h1>
+        <p className="text-muted-foreground max-w-xl">
+          Browse our entire collection of premium essentials. Refine your search to find exactly what you're looking for.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </main>
-      <Footer />
+      <ProductsGrid 
+        initialProducts={products || []} 
+        tags={tags || []} 
+        initialQuery={query}
+      />
     </div>
   );
 }

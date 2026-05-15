@@ -60,8 +60,8 @@
 
 ### Phase 6: Storefront Shopping Experience
 - [x] 6.1 Create Home Page (Hero section, featured products).
-- [ ] 6.2 Create Products Listing page with basic pagination.
-- [ ] 6.3 Implement text-based Search functionality on the Products page.
+- [x] 6.2 Create Products Listing page with basic pagination.
+- [x] 6.3 Implement text-based Search functionality on the Products page.
 - [ ] 6.4 Create Product Detail page (showing variant selector, images).
 - [ ] 6.5 Connect "Add to Cart" button to Zustand store.
 
