@@ -13,8 +13,6 @@ export default async function AuthenticatedLayout({
   const roleMapping = await getCurrentUserRole();
 
   if (!roleMapping) {
-    // If auth user but no role, they shouldn't be here
-    // In a real app, you might redirect to a "Request Access" page
     redirect("/login?error=unauthorized");
   }
 

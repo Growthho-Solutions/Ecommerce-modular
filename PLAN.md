@@ -79,7 +79,7 @@
 - [x] 9.3 Implement Guest Checkout "Shadow Account" creation & Claim Account flow.
 
 ### Phase 10: Admin Operations & Scaling
-- [ ] 10.1 Build Superadmin Store Provisioning UI (Create Stores/Managers).
+- [x] 10.1 Build Superadmin Store Provisioning UI (Create Stores/Managers).
 - [ ] 10.2 Implement Bulk CSV Import for products in the Admin panel.
 - [ ] 10.3 Implement soft-delete logic across Admin UI (Products/Orders).
 - [ ] 10.4 Implement automated transactional email triggers (Order Confirmation).
