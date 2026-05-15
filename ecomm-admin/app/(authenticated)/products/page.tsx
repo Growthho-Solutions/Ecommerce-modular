@@ -5,6 +5,7 @@ import { Plus, Edit, Trash2, Package, Layers } from "lucide-react";
 import Link from "next/link";
 import { formatCurrency } from "@/lib/store-utils";
 import { DeleteProductButton } from "@/components/delete-product-button";
+import { BulkProductImport } from "@/components/bulk-product-import";
 
 export default async function AdminProductsPage() {
   const supabase = await createClient();
@@ -41,8 +42,10 @@ export default async function AdminProductsPage() {
         </Link>
       </div>
 
-      <div className="bg-white dark:bg-[#12141c] rounded-[2.5rem] border border-border/50 shadow-sm overflow-hidden">
-        <table className="w-full text-left border-collapse">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <div className="xl:col-span-2">
+          <div className="bg-white dark:bg-[#12141c] rounded-[2.5rem] border border-border/50 shadow-sm overflow-hidden">
+            <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-border/50 bg-slate-50/50 dark:bg-white/5">
               <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Product</th>
@@ -114,7 +117,13 @@ export default async function AdminProductsPage() {
               </tr>
             )}
           </tbody>
-        </table>
+            </table>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <BulkProductImport />
+        </div>
       </div>
     </div>
   );
