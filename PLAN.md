@@ -47,7 +47,7 @@
 - [x] 3.6 Create simple Discount Codes management page (Create/Deactivate).
 
 ### Phase 4: Admin Order Management
-- [ ] 4.1 Create Orders list view (table with status filters).
+- [x] 4.1 Create Orders list view (table with status filters).
 - [ ] 4.2 Create Order details page (showing items, total, customer info).
 - [ ] 4.3 Add functionality to manually update Order Status (e.g., mark as Shipped).
 - [ ] 4.4 Add functionality to manually Cancel an order and process a manual refund.
