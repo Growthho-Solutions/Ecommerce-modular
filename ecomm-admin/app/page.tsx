@@ -112,6 +112,6 @@ export default function DashboardPage() {
   );
 }
 
-function cn(...inputs: any[]) {
+function cn(...inputs: (string | undefined | null | false)[]) {
   return inputs.filter(Boolean).join(" ");
 }

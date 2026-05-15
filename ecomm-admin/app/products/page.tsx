@@ -1,7 +1,7 @@
 import { Sidebar } from "@/components/sidebar";
 import { products } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
-import { Plus, MoreVertical, Edit, Trash2 } from "lucide-react";
+import { Plus, Edit, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 export default function AdminProductsPage() {
