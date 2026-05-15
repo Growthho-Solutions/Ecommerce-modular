@@ -36,7 +36,7 @@
 - [x] 2.3 Create Protected Route Layout (verifying `user_roles`).
 - [x] 2.4 Create Growthho Superadmin Dashboard (overview metrics).
 - [x] 2.5 Create Store Manager Dashboard (metrics scoped to `store_id`).
-- [ ] 2.6 Create "Store Configuration" page for Managers to update Name, Logo, Currency.
+- [x] 2.6 Create "Store Configuration" page for Managers to update Name, Logo, Currency.
 
 ### Phase 3: Admin Product Management
 - [ ] 3.1 Create Tags management UI (Create/Delete tags).
