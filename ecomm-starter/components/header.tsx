@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CartIcon } from "./cart-icon";
 import { Search, User } from "lucide-react";
 
-export function Header() {
+export function Header({ session }: { session?: any }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-black/80 backdrop-blur-md">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
@@ -31,7 +31,7 @@ export function Header() {
             />
           </div>
           
-          <Link href="/login" className="p-2 hover:text-blue-600 transition-colors">
+          <Link href={session ? "/profile" : "/login"} className="p-2 hover:text-blue-600 transition-colors">
             <User className="h-6 w-6" />
           </Link>
           

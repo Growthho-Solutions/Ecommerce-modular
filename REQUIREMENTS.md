@@ -43,7 +43,7 @@ The platform is physically deployed as independent applications but logically op
 *   **`product_images`**: `id`, `product_id`, `image_url`, `display_order`.
 *   **`tags`**: `id`, `store_id`, `name` (e.g., "Large", "Red", "Summer Collection").
 *   **`product_tags`**: `product_id`, `tag_id`.
-*   **`customers`**: `id`, `store_id`, `email`, `phone`, `first_name`, `last_name`, `encrypted_password` (Custom auth handled via backend/Credentials provider to allow the same email to be used across different stores without Supabase Auth unique-email conflicts).
+*   **`customers`**: `id`, `store_id`, `email`, `phone`, `name`, `password_hash`, `created_at`.
 *   **`customer_addresses`**: `id`, `customer_id`, `address_line1`, `address_line2`, `city`, `state`, `postal_code`, `country`, `is_default` (boolean).
 *   **`password_reset_tokens`**: `id`, `customer_id`, `token`, `expires_at`.
 *   **`carts`**: `id`, `store_id`, `customer_id` (nullable for guests), `session_id` (for guests), `updated_at`.
@@ -70,7 +70,7 @@ The platform is physically deployed as independent applications but logically op
 
 ### 5.2 Authentication Flows
 *   **Admins & Managers:** Use standard Supabase Auth (Email/Password) since they are global platform users. Superadmins utilize the Supabase `service_role` key (or custom claims) to bypass RLS and view all platform data.
-*   **Customers:** Because Supabase Auth enforces globally unique emails per project, and customers need strictly isolated accounts per store (meaning `john@doe.com` can create an account on Store A and later create a completely separate account on Store B), Customer authentication will be handled via a custom Credentials flow (e.g., NextAuth/Auth.js) verifying against the `customers.encrypted_password` column, rather than native Supabase Auth.
+*   **Customers:** Because Supabase Auth enforces globally unique emails per project, and customers need strictly isolated accounts per store, Customer authentication is handled via a custom Credentials flow verifying against the `customers.password_hash` column.
 *   Supports standard "Forgot Password" and "Password Reset" via email for all roles.
 *   No 2FA required for the MVP.
 

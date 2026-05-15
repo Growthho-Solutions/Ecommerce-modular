@@ -65,16 +65,29 @@
 - [x] 6.4 Create Product Detail page (showing variant selector, images).
 - [x] 6.5 Connect "Add to Cart" button to Zustand store.
 
-### Phase 7: Storefront Checkout & Auth
-- [x] 7.1 Create Cart slide-out/page (view items, change quantity, remove).
-- [x] 7.2 Implement Cart persistence logic (sync Zustand to `carts` table).
-- [x] 7.3 Create Custom Credentials Login/Signup page for Customers (interacting with the `customers` table, not global Auth).
-- [ ] 7.4 Implement Customer Password Reset flow (generating tokens and sending emails).
-- [ ] 7.5 Create Customer Profile page (Address Book management).
-- [x] 7.6 Create Checkout Page (Shipping info collection, discount code input).
-- [ ] 7.7 Implement Guest Checkout "Shadow Account" creation logic.
-- [x] 7.8 Build Mock Payment Gateway processing step.
-- [x] 7.9 Implement Order creation transaction (move cart items to order items, deduct stock).
+- [/] Phase 7: Storefront Checkout & Auth
+  - [x] 7.1 Create Cart slide-out/page (view items, change quantity, remove).
+  - [x] 7.2 Implement Cart persistence logic (sync Zustand to `carts` table).
+  - [x] 7.3 Create Custom Credentials Login/Signup page for Customers.
+  - [x] 7.6 Create Checkout Page (Shipping info collection).
+  - [x] 7.8 Build Mock Payment Gateway processing step.
+  - [x] 7.9 Implement Order creation transaction.
+
+### Phase 9: Advanced Customer Features
+- [ ] 9.1 Implement Customer Password Reset flow (generating tokens and sending emails).
+- [x] 9.2 Create Customer Profile page with Address Book management.
+- [ ] 9.3 Implement Guest Checkout "Shadow Account" creation & Claim Account flow.
+
+### Phase 10: Admin Operations & Scaling
+- [ ] 10.1 Build Superadmin Store Provisioning UI (Create Stores/Managers).
+- [ ] 10.2 Implement Bulk CSV Import for products in the Admin panel.
+- [ ] 10.3 Implement soft-delete logic across Admin UI (Products/Orders).
+- [ ] 10.4 Implement automated transactional email triggers (Order Confirmation).
+
+### Phase 11: Compliance & Localization
+- [ ] 11.1 Create dynamic Terms of Service & Privacy Policy pages for storefronts.
+- [ ] 11.2 Implement a Cookie Consent banner for the storefront.
+- [ ] 11.3 Audit and finalize i18n support for the starter template.
 
 ### Phase 8: Polish & Finalization
 - [x] 8.1 Add standard `robots.txt` and dynamic `sitemap.xml` to `ecomm-starter`.

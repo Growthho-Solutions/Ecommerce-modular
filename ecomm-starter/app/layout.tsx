@@ -43,7 +43,7 @@ export default async function RootLayout({
         >
           <div className="flex flex-col min-h-screen">
             <CartSync customerId={session?.customer?.id} />
-            <Header />
+            <Header session={session} />
             <main className="flex-grow">
               {children}
             </main>
