@@ -50,7 +50,7 @@
 - [x] 4.1 Create Orders list view (table with status filters).
 - [x] 4.2 Create Order Detail view (customer info, line items, status update).
 - [x] 4.3 Create Customers list view (LTV and order history).
-- [ ] 4.4 Refine Dashboard Analytics with live data (AOV, LTV, total revenue).
+- [x] 4.4 Refine Dashboard Analytics with live data (AOV, LTV, total revenue).
 
 ### Phase 5: Storefront Infrastructure (`ecomm-starter`)
 - [ ] 5.1 Configure `NEXT_PUBLIC_STORE_ID` in `.env.local` and create a centralized DB client that automatically passes this ID to all queries.
