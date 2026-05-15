@@ -71,10 +71,10 @@
 - [x] 7.3 Create Custom Credentials Login/Signup page for Customers (interacting with the `customers` table, not global Auth).
 - [ ] 7.4 Implement Customer Password Reset flow (generating tokens and sending emails).
 - [ ] 7.5 Create Customer Profile page (Address Book management).
-- [ ] 7.6 Create Checkout Page (Shipping info collection, discount code input).
+- [x] 7.6 Create Checkout Page (Shipping info collection, discount code input).
 - [ ] 7.7 Implement Guest Checkout "Shadow Account" creation logic.
-- [ ] 7.8 Build Mock Payment Gateway processing step.
-- [ ] 7.9 Implement Order creation transaction (move cart items to order items, deduct stock).
+- [x] 7.8 Build Mock Payment Gateway processing step.
+- [x] 7.9 Implement Order creation transaction (move cart items to order items, deduct stock).
 
 ### Phase 8: Polish & Finalization
 - [ ] 8.1 Add standard `robots.txt` and dynamic `sitemap.xml` to `ecomm-starter`.
