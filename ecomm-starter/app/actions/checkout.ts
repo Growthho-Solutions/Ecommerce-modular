@@ -9,12 +9,39 @@ export async function processCheckout(formData: FormData, cartItems: any[]) {
   const supabase = await createClient();
   const storeId = getStoreId();
   const session = await getCustomerSession();
-  const customerId = session?.customer?.id;
+  let customerId = session?.customer?.id;
 
+  // Handle Guest Checkout (Requirement 6.2)
   if (!customerId) {
-    // For MVP, we require login for checkout. 
-    // In Phase 7.7 we can add guest checkout.
-    return { error: "Please login to complete your order." };
+    const email = formData.get("email") as string;
+    const name = `${formData.get("firstName")} ${formData.get("lastName")}`;
+    
+    // Check if customer already exists (maybe they just aren't logged in)
+    const { data: existing } = await supabase
+      .from("customers")
+      .select("id")
+      .eq("email", email)
+      .eq("store_id", storeId)
+      .single();
+    
+    if (existing) {
+      customerId = existing.id;
+    } else {
+      // Create shadow account
+      const { data: newCustomer, error: custError } = await supabase
+        .from("customers")
+        .insert({
+          email,
+          name,
+          store_id: storeId,
+          // password_hash is null for shadow accounts
+        })
+        .select("id")
+        .single();
+      
+      if (custError) return { error: "Failed to create guest account" };
+      customerId = newCustomer.id;
+    }
   }
 
   // 1. Calculate totals and validate stock

@@ -76,7 +76,7 @@
 ### Phase 9: Advanced Customer Features
 - [ ] 9.1 Implement Customer Password Reset flow (generating tokens and sending emails).
 - [x] 9.2 Create Customer Profile page with Address Book management.
-- [ ] 9.3 Implement Guest Checkout "Shadow Account" creation & Claim Account flow.
+- [x] 9.3 Implement Guest Checkout "Shadow Account" creation & Claim Account flow.
 
 ### Phase 10: Admin Operations & Scaling
 - [ ] 10.1 Build Superadmin Store Provisioning UI (Create Stores/Managers).
