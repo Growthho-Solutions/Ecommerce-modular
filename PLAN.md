@@ -46,11 +46,11 @@
 - [x] 3.5 Implement Supabase Storage upload for Product Images.
 - [x] 3.6 Create simple Discount Codes management page (Create/Deactivate).
 
-### Phase 4: Admin Order Management
+### Phase 4: Admin Order & Customer Management
 - [x] 4.1 Create Orders list view (table with status filters).
-- [x] 4.2 Create Order details page (showing items, total, customer info).
-- [ ] 4.3 Add functionality to manually update Order Status (e.g., mark as Shipped).
-- [ ] 4.4 Add functionality to manually Cancel an order and process a manual refund.
+- [x] 4.2 Create Order Detail view (customer info, line items, status update).
+- [x] 4.3 Create Customers list view (LTV and order history).
+- [ ] 4.4 Refine Dashboard Analytics with live data (AOV, LTV, total revenue).
 
 ### Phase 5: Storefront Infrastructure (`ecomm-starter`)
 - [ ] 5.1 Configure `NEXT_PUBLIC_STORE_ID` in `.env.local` and create a centralized DB client that automatically passes this ID to all queries.
