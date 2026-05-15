@@ -18,7 +18,8 @@ import {
   Settings, 
   BarChart3,
   LogOut,
-  Store
+  Store,
+  Ticket
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserRole } from "@/lib/auth-utils";
@@ -36,6 +37,7 @@ export function Sidebar({ className, role }: SidebarProps) {
     { label: "Tags", href: "/tags", icon: Package, roles: ["manager"] },
     { label: "Orders", href: "/orders", icon: ShoppingCart, roles: ["manager"] },
     { label: "Customers", href: "/customers", icon: Users, roles: ["manager"] },
+    { label: "Discounts", href: "/discounts", icon: Ticket, roles: ["manager"] },
     { label: "Analytics", href: "/analytics", icon: BarChart3, roles: ["superadmin", "manager"] },
     { label: "Settings", href: "/settings", icon: Settings, roles: ["superadmin", "manager"] },
   ].filter(item => item.roles.includes(role));
