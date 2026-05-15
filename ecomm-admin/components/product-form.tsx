@@ -30,6 +30,8 @@ interface Variant {
   is_active: boolean;
 }
 
+import { ImageUploader } from "./image-uploader";
+
 interface ProductFormProps {
   product: any;
   tags: any[];
@@ -39,6 +41,7 @@ interface ProductFormProps {
 
 export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [tempId] = useState(product?.id || crypto.randomUUID());
   const router = useRouter();
   const supabase = createClient();
 
@@ -55,6 +58,11 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
   // Variants State
   const [variants, setVariants] = useState<Variant[]>(
     product?.product_variants || [{ sku: "", price: 0, stock_quantity: 0, is_active: true }]
+  );
+
+  // Images State
+  const [imageUrls, setImageUrls] = useState<string[]>(
+    product?.product_images?.map((pi: any) => pi.image_url) || []
   );
 
   const handleAddVariant = () => {
@@ -88,17 +96,14 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
 
     setIsLoading(true);
     try {
-      let productId = product?.id;
+      const productId = tempId;
 
       // 1. Save/Update Product
       if (isNew) {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from("products")
-          .insert({ name, description, is_active: isActive, store_id: storeId })
-          .select()
-          .single();
+          .insert({ id: productId, name, description, is_active: isActive, store_id: storeId });
         if (error) throw error;
-        productId = data.id;
       } else {
         const { error } = await supabase
           .from("products")
@@ -108,9 +113,7 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
       }
 
       // 2. Sync Tags
-      // Delete old tags first
       await supabase.from("product_tags").delete().eq("product_id", productId);
-      // Insert new tags
       if (selectedTagIds.length > 0) {
         const tagInserts = selectedTagIds.map(tag_id => ({ product_id: productId, tag_id }));
         const { error: tagError } = await supabase.from("product_tags").insert(tagInserts);
@@ -118,18 +121,12 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
       }
 
       // 3. Sync Variants
-      // For simplicity in MVP, we'll replace all variants if it's easier, or do a proper sync.
-      // Let's do a proper sync: update existing, insert new, delete missing.
       const currentVariantIds = product?.product_variants?.map((v: any) => v.id) || [];
       const incomingVariantIds = variants.map(v => v.id).filter(Boolean);
-      
-      // Delete missing
       const idsToDelete = currentVariantIds.filter((id: string) => !incomingVariantIds.includes(id));
       if (idsToDelete.length > 0) {
         await supabase.from("product_variants").delete().in("id", idsToDelete);
       }
-
-      // Update/Insert others
       for (const v of variants) {
         const variantData = { 
           product_id: productId, 
@@ -143,6 +140,18 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
         } else {
           await supabase.from("product_variants").insert(variantData);
         }
+      }
+
+      // 4. Sync Images
+      await supabase.from("product_images").delete().eq("product_id", productId);
+      if (imageUrls.length > 0) {
+        const imageInserts = imageUrls.map((url, index) => ({
+          product_id: productId,
+          image_url: url,
+          display_order: index
+        }));
+        const { error: imageError } = await supabase.from("product_images").insert(imageInserts);
+        if (imageError) throw imageError;
       }
 
       toast.success(isNew ? "Product created!" : "Product updated!");
@@ -290,6 +299,17 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
           </Link>
         </div>
 
+        {/* Media */}
+        <div className="glass-card p-8 rounded-[2.5rem] bg-white dark:bg-[#12141c] border border-border/50 shadow-sm space-y-4">
+          <h3 className="font-bold">Product Media</h3>
+          <ImageUploader 
+            storeId={storeId} 
+            productId={tempId} 
+            initialImages={imageUrls}
+            onImagesChange={setImageUrls} 
+          />
+        </div>
+
         {/* Tags Selection */}
         <div className="glass-card p-8 rounded-[2.5rem] bg-white dark:bg-[#12141c] border border-border/50 shadow-sm space-y-4">
           <h3 className="font-bold">Tags & Categories</h3>
@@ -312,16 +332,6 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
             {tags.length === 0 && (
               <p className="text-xs text-muted-foreground italic">No tags created yet. Go to Tags menu to add some.</p>
             )}
-          </div>
-        </div>
-
-        {/* Media (Placeholder for now) */}
-        <div className="glass-card p-8 rounded-[2.5rem] bg-white dark:bg-[#12141c] border border-border/50 shadow-sm space-y-4">
-          <h3 className="font-bold">Product Media</h3>
-          <div className="aspect-square rounded-[2rem] bg-slate-50 dark:bg-white/5 border-2 border-dashed border-border/50 flex flex-col items-center justify-center text-center p-6 opacity-50">
-             <Plus className="h-8 w-8 mb-4 text-muted-foreground" />
-             <p className="text-sm font-medium">Image Upload Coming Soon</p>
-             <p className="text-[10px] uppercase tracking-widest mt-1">Next Task: 3.5</p>
           </div>
         </div>
       </div>

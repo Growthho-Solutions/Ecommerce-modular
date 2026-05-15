@@ -43,7 +43,7 @@
 - [x] 3.2 Create Products list view (table with pagination).
 - [x] 3.3 Create Product Creation form (basic details).
 - [x] 3.4 Add Product Variants management to Product form (SKU, price, stock).
-- [ ] 3.5 Implement Supabase Storage upload for Product Images.
+- [x] 3.5 Implement Supabase Storage upload for Product Images.
 - [ ] 3.6 Create simple Discount Codes management page (Create/Deactivate).
 
 ### Phase 4: Admin Order Management
