@@ -2,10 +2,10 @@
 
 ## 🤖 Instructions for AI Coding Agent
 1. **Granularity:** Execute tasks strictly one at a time. Do not combine multiple checkboxes into a single step. Small, incremental changes are mandatory.
-2. **Commit Often:** After successfully completing a single task checkbox, run `git add .` and `git commit -m "<simple message>"` to save progress.
+2. **Commit History:** After making small, incremental changes, run `git add .` and `git commit -m "<simple standard message>"` to maintain a clean, readable git commit history.
 3. **No Dev Servers:** Do NOT run commands like `npm run dev` or `npm run build` autonomously. Ask the USER to run these commands in their own terminal and wait for them to report back the results/errors.
 4. **Track Progress:** When you complete a task, you MUST update this `PLAN.md` file to mark the checkbox `[x]`. 
-5. **Living Documents:** If architectural changes occur during development, you MUST update both `REQUIREMENTS.md` and `PLAN.md` to reflect the new reality. Keep these documents perfectly in sync with the codebase.
+5. **Living Documents:** Keep all Markdown files (`REQUIREMENTS.md`, `PLAN.md`, and all `README.md` files) perfectly up-to-date and in sync with the codebase as architectural, feature, or developer workflow changes occur.
 
 ---
 
@@ -107,3 +107,5 @@
 - [x] 8.15 Strongly type the cartItems parameter and eliminate the unused redirect import in ecomm-starter/app/actions/checkout.ts.
 - [x] 8.16 Disable nextConfig.cacheComponents in ecomm-admin/next.config.ts to restore build compatibility with dynamic route layouts.
 - [x] 8.17 Migrate deprecated middleware.ts to proxy.ts (renaming functions to proxy) in both ecomm-admin and ecomm-starter to comply with Next.js 16+ conventions.
+- [x] 8.18 Rewrite root, ecomm-admin, and ecomm-starter README files to deliver complete, premium documentation for developers, tenant environments, and custom checkout/auth solutions.
+- [x] 8.19 Expand AI instructions in PLAN.md to strictly mandate clean commit histories with standard simple commit messages and keeping all monorepo markdown files up-to-date.
