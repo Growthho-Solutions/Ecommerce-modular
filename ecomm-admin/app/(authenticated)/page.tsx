@@ -58,7 +58,7 @@ export default function DashboardPage() {
             <div className="bg-card rounded-2xl border border-border/50 shadow-sm overflow-hidden">
               <div className="p-6 border-b border-border/50 flex items-center justify-between">
                 <h2 className="font-bold">Recent Orders</h2>
-                <button className="text-xs font-medium text-primary hover:underline">View All</button>
+                <button type="button" className="text-xs font-medium text-primary hover:underline">View All</button>
               </div>
               <div className="divide-y divide-border/50">
                 {orders.map((order) => (
@@ -85,7 +85,7 @@ export default function DashboardPage() {
             <div className="bg-card rounded-2xl border border-border/50 shadow-sm overflow-hidden">
               <div className="p-6 border-b border-border/50 flex items-center justify-between">
                 <h2 className="font-bold">Top Products</h2>
-                <button className="text-xs font-medium text-primary hover:underline">Manage</button>
+                <button type="button" className="text-xs font-medium text-primary hover:underline">Manage</button>
               </div>
               <div className="divide-y divide-border/50">
                 {products.slice(0, 4).map((product) => (

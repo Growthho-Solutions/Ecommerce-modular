@@ -109,3 +109,4 @@
 - [x] 8.17 Migrate deprecated middleware.ts to proxy.ts (renaming functions to proxy) in both ecomm-admin and ecomm-starter to comply with Next.js 16+ conventions.
 - [x] 8.18 Rewrite root, ecomm-admin, and ecomm-starter README files to deliver complete, premium documentation for developers, tenant environments, and custom checkout/auth solutions.
 - [x] 8.19 Expand AI instructions in PLAN.md to strictly mandate clean commit histories with standard simple commit messages and keeping all monorepo markdown files up-to-date.
+- [x] 8.20 Fix all outstanding accessibility (a11y) labels and button type constraints inside ecomm-admin dashboard layout/store-creation and ecomm-starter login forms.

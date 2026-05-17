@@ -36,10 +36,11 @@ export default function NewStorePage() {
       <form onSubmit={handleSubmit} className="bg-white dark:bg-[#12141c] rounded-[3rem] border border-border/50 p-12 shadow-2xl shadow-blue-500/5 space-y-8">
         <div className="space-y-6">
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Store Name</label>
+            <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Store Name</label>
             <div className="relative">
               <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
+                id="name"
                 name="name"
                 required
                 placeholder="e.g. Modern Boutique"
@@ -50,10 +51,11 @@ export default function NewStorePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Support Email</label>
+              <label htmlFor="supportEmail" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Support Email</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
+                  id="supportEmail"
                   name="supportEmail"
                   type="email"
                   required
@@ -64,10 +66,11 @@ export default function NewStorePage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Base Currency</label>
+              <label htmlFor="baseCurrency" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Base Currency</label>
               <div className="relative">
                 <Coins className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
+                  id="baseCurrency"
                   name="baseCurrency"
                   required
                   placeholder="USD"

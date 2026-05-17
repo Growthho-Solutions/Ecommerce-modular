@@ -34,10 +34,11 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="glass-card p-10 rounded-[3rem] bg-white dark:bg-[#12141c] border border-border/50 shadow-2xl shadow-blue-600/5 space-y-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Email Address</label>
+              <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Email Address</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input 
+                  id="email"
                   name="email" 
                   type="email" 
                   placeholder="hello@example.com" 
@@ -49,12 +50,13 @@ export default function LoginPage() {
             
             <div className="space-y-2">
               <div className="flex justify-between items-center px-4">
-                <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Password</label>
+                <label htmlFor="password" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Password</label>
                 <Link href="/forgot-password" className="text-[10px] font-bold text-blue-600 hover:underline uppercase tracking-widest">Forgot?</Link>
               </div>
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input 
+                  id="password"
                   name="password" 
                   type="password" 
                   placeholder="••••••••" 
