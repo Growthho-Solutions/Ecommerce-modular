@@ -1,4 +1,3 @@
-import { Sidebar } from "@/components/sidebar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,7 +8,6 @@ import Link from "next/link";
 export default function NewProductPage() {
   return (
     <div className="flex min-h-screen bg-muted/40">
-      <Sidebar />
       <main className="flex-1 flex flex-col overflow-hidden">
         <header className="h-16 border-b bg-card flex items-center justify-between px-8">
           <div className="flex items-center gap-4">

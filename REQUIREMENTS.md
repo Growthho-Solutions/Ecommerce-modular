@@ -126,3 +126,49 @@ The platform is physically deployed as independent applications but logically op
 *   **Environment Variables:** 
     *   `ecomm-admin`: Requires `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
     *   `ecomm-starter`: Requires `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_STORE_ID`.
+
+---
+
+## 8. Repository Architecture, Workflows, & Git Best Practices
+
+### 8.1 Monorepo vs. Multirepo for Multi-tenant SaaS
+To build, deploy, and maintain the admin panel (`ecomm-admin`) and multiple customizable client storefronts (`ecomm-starter`), we use a **Hybrid Monorepo / Multirepo Model**:
+1.  **Core Platform Monorepo (`@growthho/monorepo`):** Built with `pnpm` workspaces. Contains `ecomm-admin` and the core reference template `ecomm-starter`. This keeps core types (e.g., database schemas, models) and shared utilities central, ensuring full type-safety and synchronous API updates.
+2.  **Client-Specific Storefronts (Bespoke Multirepo):** When a client requests extensive visual customization or custom logic (bespoke themes, custom features), the core `ecomm-starter` template is cloned into a **separate private repository**. This separates standard platform features from client-specific styling and custom enhancements, ensuring the core codebase remains clean and maintainable.
+
+### 8.2 Git Workflows & Upstream Syncing
+*   **Trunk-Based Monorepo Workflow:** Superadmins and platform developers push to short-lived feature branches, submitting PRs to the main `main` branch. Pull requests trigger linting (`pnpm lint`), typechecking (`pnpm typecheck`), and production build verification (`pnpm run build`).
+*   **Upstream Syncing for Custom Storefronts:** To pull new security patches and features from the core storefront template into customized client repositories:
+    1.  Add the core monorepo storefront as a remote in the client's repository:
+        ```bash
+        git remote add upstream <core-starter-template-repo-url>
+        ```
+    2.  Fetch and merge upstream changes while preserving client-specific overrides:
+        ```bash
+        git fetch upstream
+        git merge upstream/main --allow-unrelated-histories
+        ```
+
+### 8.3 Diagnostics: Resolving Next.js/Turbopack Workspace Root Detection
+During builds in workspace environments, Next.js (especially Turbopack in version 16+) may search upward for lockfiles to determine the workspace root directory.
+*   **The Issue:** If a lockfile (like `yarn.lock` or `package-lock.json`) exists in the user's home directory (e.g., `/home/xaxh/yarn.lock`), Next.js incorrectly infers the home directory as the workspace root. This pollutes module resolution paths and leads to type checking errors (such as resolving `Product` imports to incorrect directories or cached copies).
+*   **Resolution Options:**
+    *   **Option A (Recommended):** Delete the stray lockfile in the home folder if it is not associated with an active project:
+        ```bash
+        rm /home/xaxh/yarn.lock
+        ```
+    *   **Option B (Explicit Overriding):** Explicitly lock the project root inside Next.js configurations (`next.config.ts`):
+        ```typescript
+        // next.config.ts
+        import type { NextConfig } from "next";
+        import path from "path";
+
+        const nextConfig: NextConfig = {
+          // ...
+          turbopack: {
+            root: path.resolve(__dirname, ".."),
+          },
+        };
+        export default nextConfig;
+        ```
+

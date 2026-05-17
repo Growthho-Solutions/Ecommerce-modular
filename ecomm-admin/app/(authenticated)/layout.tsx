@@ -5,6 +5,8 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { User, Bell, Settings as SettingsIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+export const dynamic = "force-dynamic";
+
 export default async function AuthenticatedLayout({
   children,
 }: {

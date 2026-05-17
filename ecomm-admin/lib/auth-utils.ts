@@ -13,7 +13,7 @@ export interface UserRoleMapping {
  */
 export async function getCurrentUserRole(): Promise<UserRoleMapping | null> {
   const supabase = await createClient();
-  
+
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
@@ -32,4 +32,14 @@ export async function getCurrentUserRole(): Promise<UserRoleMapping | null> {
     role: data.role as UserRole,
     store_id: data.store_id,
   };
+}
+
+export async function getAuthStoreId(): Promise<string | null> {
+  const role = await getCurrentUserRole();
+  return role?.store_id || null;
+}
+
+export async function isSuperadmin(): Promise<boolean> {
+  const role = await getCurrentUserRole();
+  return role?.role === "superadmin";
 }

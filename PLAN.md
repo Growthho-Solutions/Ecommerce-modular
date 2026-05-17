@@ -94,3 +94,16 @@
 - [x] 8.2 Add simple API rate-limiting middleware to `ecomm-admin` and `ecomm-starter`.
 - [x] 8.3 Verify all RLS policies are strictly enforcing multi-tenant isolation.
 - [x] 8.4 Perform final end-to-end testing of the complete checkout flow.
+- [x] 8.5 Define Monorepo vs. Multirepo hybrid repository architecture, Git workflows, and build troubleshooting strategy in REQUIREMENTS.md.
+- [x] 8.6 Resolve the Next.js Workspace Root lockfile inference issue by deleting `/home/xaxh/yarn.lock` or configuring `turbopack.root` in Next.js configs.
+- [x] 8.7 Remove unused, non-existent logo imports causing TypeScript typecheck failures in ecomm-admin/components/hero.tsx.
+- [x] 8.8 Create root biome.json to enforce strict linter rules (raising noUnusedImports to error level) and standardized formatting across the monorepo.
+- [x] 8.9 Remove invalid 'size="sm"' attribute from Next.js <Link> component in ecomm-starter/app/login/page.tsx to resolve compiler typecheck failures.
+- [x] 8.10 Fix incorrect relative import of hasEnvVars inside unused library ecomm-starter/lib/supabase/proxy.ts by defining the environment variable check locally.
+- [x] 8.11 Create a developer Makefile at the root of the workspace to provide unified command shortcuts for development, building, linting, formatting, and cache clearing.
+- [x] 8.12 Enforce dynamic rendering (force-dynamic) on ecomm-admin/app/(authenticated)/layout.tsx to prevent Next.js static prerendering build failures.
+- [x] 8.13 Exclude Next.js compile directories (.next), node_modules, and cache files from Biome lint scans to prevent linter scanning errors.
+- [x] 8.14 Resolve accessibility (a11y) labels and explicit button types inside storefront pages (claim-account and order-confirmation).
+- [x] 8.15 Strongly type the cartItems parameter and eliminate the unused redirect import in ecomm-starter/app/actions/checkout.ts.
+- [x] 8.16 Disable nextConfig.cacheComponents in ecomm-admin/next.config.ts to restore build compatibility with dynamic route layouts.
+- [x] 8.17 Migrate deprecated middleware.ts to proxy.ts (renaming functions to proxy) in both ecomm-admin and ecomm-starter to comply with Next.js 16+ conventions.

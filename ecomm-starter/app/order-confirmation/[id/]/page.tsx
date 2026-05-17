@@ -20,7 +20,7 @@ export default function OrderConfirmationPage({
       <div className="max-w-md mx-auto p-8 rounded-[2.5rem] bg-slate-50 dark:bg-white/5 border border-border/50">
         <p className="text-sm font-medium mb-6">A confirmation email has been sent to your inbox. You can track your order status in your profile.</p>
         <Link href="/products">
-          <button className="w-full h-16 rounded-2xl bg-blue-600 text-white font-black text-sm uppercase tracking-widest hover:bg-blue-500 transition-all flex items-center justify-center gap-2 group">
+          <button type="button" className="w-full h-16 rounded-2xl bg-blue-600 text-white font-black text-sm uppercase tracking-widest hover:bg-blue-500 transition-all flex items-center justify-center gap-2 group">
             Continue Shopping
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>

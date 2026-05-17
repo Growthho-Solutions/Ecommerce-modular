@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { uploadProductImage } from "@/lib/storage-utils";
 import { Button } from "@/components/ui/button";
-import { 
-  Plus, 
-  X, 
-  Image as ImageIcon, 
+import {
+  Plus,
+  X,
+  Image as ImageIcon,
   Upload,
   Loader2
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 
 interface ImageUploaderProps {
@@ -20,11 +20,11 @@ interface ImageUploaderProps {
   initialImages?: string[];
 }
 
-export function ImageUploader({ 
-  storeId, 
-  productId, 
-  onImagesChange, 
-  initialImages = [] 
+export function ImageUploader({
+  storeId,
+  productId,
+  onImagesChange,
+  initialImages = []
 }: ImageUploaderProps) {
   const [images, setImages] = useState<string[]>(initialImages);
   const [isUploading, setIsUploading] = useState(false);
@@ -85,11 +85,11 @@ export function ImageUploader({
           "aspect-square rounded-[1.5rem] border-2 border-dashed border-border/50 flex flex-col items-center justify-center cursor-pointer hover:border-blue-500/50 hover:bg-blue-500/5 transition-all group",
           isUploading && "pointer-events-none opacity-50"
         )}>
-          <input 
-            type="file" 
-            multiple 
-            accept="image/*" 
-            className="hidden" 
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            className="hidden"
             onChange={handleFileUpload}
           />
           {isUploading ? (
@@ -104,7 +104,7 @@ export function ImageUploader({
           )}
         </label>
       </div>
-      
+
       {images.length === 0 && !isUploading && (
         <div className="p-8 rounded-[1.5rem] bg-slate-50/50 dark:bg-white/5 border border-border/30 text-center">
           <ImageIcon className="h-8 w-8 mx-auto mb-3 opacity-20" />

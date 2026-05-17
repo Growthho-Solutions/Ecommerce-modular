@@ -3,9 +3,15 @@
 import { createClient } from "@/lib/supabase/server";
 import { getStoreId } from "@/lib/store-utils";
 import { getCustomerSession } from "@/lib/customer-auth";
-import { redirect } from "next/navigation";
 
-export async function processCheckout(formData: FormData, cartItems: any[]) {
+export interface CartItem {
+  variantId: string;
+  quantity: number;
+  name: string;
+  price: number;
+}
+
+export async function processCheckout(formData: FormData, cartItems: CartItem[]) {
   const supabase = await createClient();
   const storeId = getStoreId();
   const session = await getCustomerSession();

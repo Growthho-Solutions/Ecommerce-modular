@@ -1,21 +1,10 @@
 import Link from "next/link";
-import { 
-  LayoutDashboard, 
-  Package, 
-  ShoppingCart, 
-  Users, 
-  Settings, 
-  BarChart3,
-  LogOut
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-
-import { 
-  LayoutDashboard, 
-  Package, 
-  ShoppingCart, 
-  Users, 
-  Settings, 
+import {
+  LayoutDashboard,
+  Package,
+  ShoppingCart,
+  Users,
+  Settings,
   BarChart3,
   LogOut,
   Store,

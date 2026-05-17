@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +61,7 @@ export function OrderStatusControl({ orderId, currentStatus }: OrderStatusContro
       )}>
         Current: {status}
       </div>
-      
+
       <Select value={status} onValueChange={handleStatusChange} disabled={isLoading}>
         <SelectTrigger className="h-12 w-48 rounded-2xl bg-white dark:bg-[#12141c] border-border/50 shadow-sm font-bold">
           <SelectValue placeholder="Update Status" />

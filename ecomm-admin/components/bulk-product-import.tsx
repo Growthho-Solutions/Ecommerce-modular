@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Upload, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 
 export function BulkProductImport() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +18,7 @@ export function BulkProductImport() {
   const handleUpload = async () => {
     if (!file) return;
     setIsLoading(true);
-    
+
     // In a real implementation, we would parse CSV and call a server action
     // For now, we'll simulate the process and show the requirement is handled
     setTimeout(() => {
@@ -43,8 +43,8 @@ export function BulkProductImport() {
       <div className="space-y-4">
         <label className="block">
           <span className="sr-only">Choose CSV file</span>
-          <input 
-            type="file" 
+          <input
+            type="file"
             accept=".csv"
             onChange={handleFileChange}
             className="block w-full text-sm text-slate-500
@@ -55,14 +55,14 @@ export function BulkProductImport() {
               hover:file:bg-blue-500 transition-all cursor-pointer"
           />
         </label>
-        
+
         {file && (
           <div className="flex items-center justify-between p-4 bg-white dark:bg-black/20 rounded-2xl border border-blue-600/20 animate-in fade-in zoom-in duration-300">
             <div className="flex items-center gap-3">
               <FileText className="h-5 w-5 text-blue-600" />
               <span className="text-sm font-bold">{file.name}</span>
             </div>
-            <Button 
+            <Button
               onClick={handleUpload}
               disabled={isLoading}
               className="h-10 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs uppercase tracking-widest"

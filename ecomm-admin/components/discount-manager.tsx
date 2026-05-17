@@ -6,23 +6,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
-import { 
-  Ticket, 
-  Plus, 
-  Trash2, 
-  Percent, 
+import {
+  Ticket,
+  Plus,
+  Trash2,
+  Percent,
   DollarSign,
   Calendar,
   X
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 
 interface Discount {
@@ -113,7 +113,7 @@ export function DiscountManager({ initialDiscounts, storeId }: { initialDiscount
     <div className="space-y-6">
       <div className="flex justify-end">
         {!isAdding && (
-          <Button 
+          <Button
             onClick={() => setIsAdding(true)}
             className="h-12 px-6 rounded-2xl bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/20 font-bold"
           >
@@ -131,12 +131,12 @@ export function DiscountManager({ initialDiscounts, storeId }: { initialDiscount
               <X className="h-5 w-5" />
             </Button>
           </div>
-          
+
           <form onSubmit={handleCreate} className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
               <Label className="text-xs font-bold uppercase tracking-widest ml-1">Code</Label>
-              <Input 
-                placeholder="SAVE20" 
+              <Input
+                placeholder="SAVE20"
                 value={newCode}
                 onChange={(e) => setNewCode(e.target.value)}
                 className="h-12 rounded-2xl bg-slate-50 dark:bg-white/5 border-border/50 font-mono font-bold uppercase"
@@ -156,7 +156,7 @@ export function DiscountManager({ initialDiscounts, storeId }: { initialDiscount
             </div>
             <div className="space-y-2">
               <Label className="text-xs font-bold uppercase tracking-widest ml-1">Value ({newType === "percentage" ? "%" : "Cents"})</Label>
-              <Input 
+              <Input
                 type="number"
                 value={newValue}
                 onChange={(e) => setNewValue(parseInt(e.target.value) || 0)}
@@ -167,8 +167,8 @@ export function DiscountManager({ initialDiscounts, storeId }: { initialDiscount
               <Button type="button" variant="ghost" onClick={() => setIsAdding(false)} className="h-12 rounded-2xl px-6">
                 Cancel
               </Button>
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="h-12 rounded-2xl px-8 bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/20 font-bold"
                 disabled={isLoading}
               >
@@ -231,16 +231,16 @@ export function DiscountManager({ initialDiscounts, storeId }: { initialDiscount
                     )}>
                       {discount.is_active ? "Active" : "Inactive"}
                     </span>
-                    <Switch 
+                    <Switch
                       checked={discount.is_active}
                       onCheckedChange={() => toggleStatus(discount.id, discount.is_active)}
                     />
                   </div>
                 </td>
                 <td className="px-8 py-6 text-right">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={() => handleDelete(discount.id)}
                     className="h-10 w-10 rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-all"
                   >

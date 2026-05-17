@@ -6,14 +6,14 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 
 interface Store {
   id: string;
@@ -47,7 +47,7 @@ export function StoreForm({ store }: { store: Store }) {
         .eq("id", store.id);
 
       if (error) throw error;
-      
+
       toast.success("Store settings updated successfully!");
       router.refresh();
     } catch (error: any) {
@@ -62,15 +62,15 @@ export function StoreForm({ store }: { store: Store }) {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name" className="text-sm font-semibold ml-1">Store Name</Label>
-          <Input 
-            id="name" 
-            name="name" 
-            defaultValue={store.name} 
-            required 
+          <Input
+            id="name"
+            name="name"
+            defaultValue={store.name}
+            required
             className="h-12 rounded-2xl bg-slate-50 dark:bg-white/5 border-border/50 focus:ring-blue-500/20"
           />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="base_currency" className="text-sm font-semibold ml-1">Base Currency</Label>
           <Select name="base_currency" defaultValue={store.base_currency}>
@@ -88,11 +88,11 @@ export function StoreForm({ store }: { store: Store }) {
 
         <div className="space-y-2">
           <Label htmlFor="support_email" className="text-sm font-semibold ml-1">Support Email</Label>
-          <Input 
-            id="support_email" 
-            name="support_email" 
-            type="email" 
-            defaultValue={store.support_email || ""} 
+          <Input
+            id="support_email"
+            name="support_email"
+            type="email"
+            defaultValue={store.support_email || ""}
             placeholder="support@yourstore.com"
             className="h-12 rounded-2xl bg-slate-50 dark:bg-white/5 border-border/50 focus:ring-blue-500/20"
           />
@@ -100,10 +100,10 @@ export function StoreForm({ store }: { store: Store }) {
 
         <div className="space-y-2">
           <Label htmlFor="logo_url" className="text-sm font-semibold ml-1">Logo URL</Label>
-          <Input 
-            id="logo_url" 
-            name="logo_url" 
-            defaultValue={store.logo_url || ""} 
+          <Input
+            id="logo_url"
+            name="logo_url"
+            defaultValue={store.logo_url || ""}
             placeholder="https://example.com/logo.png"
             className="h-12 rounded-2xl bg-slate-50 dark:bg-white/5 border-border/50 focus:ring-blue-500/20"
           />
@@ -111,8 +111,8 @@ export function StoreForm({ store }: { store: Store }) {
       </div>
 
       <div className="flex justify-end pt-4">
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           className="h-12 px-8 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-lg shadow-blue-600/20 transition-all active:scale-95"
           disabled={isLoading}
         >

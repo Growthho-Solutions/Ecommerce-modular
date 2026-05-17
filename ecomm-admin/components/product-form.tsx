@@ -8,17 +8,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { 
-  Plus, 
-  Trash2, 
-  Package, 
-  DollarSign, 
-  Hash, 
+import {
+  Plus,
+  Trash2,
+  Package,
+  DollarSign,
+  Hash,
   Save,
   ChevronLeft,
   X
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -84,7 +84,7 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
   };
 
   const toggleTag = (tagId: string) => {
-    setSelectedTagIds(prev => 
+    setSelectedTagIds(prev =>
       prev.includes(tagId) ? prev.filter(id => id !== tagId) : [...prev, tagId]
     );
   };
@@ -128,12 +128,12 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
         await supabase.from("product_variants").delete().in("id", idsToDelete);
       }
       for (const v of variants) {
-        const variantData = { 
-          product_id: productId, 
-          sku: v.sku, 
-          price: v.price, 
-          stock_quantity: v.stock_quantity, 
-          is_active: v.is_active 
+        const variantData = {
+          product_id: productId,
+          sku: v.sku,
+          price: v.price,
+          stock_quantity: v.stock_quantity,
+          is_active: v.is_active
         };
         if (v.id) {
           await supabase.from("product_variants").update(variantData).eq("id", v.id);
@@ -173,22 +173,22 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
             <Package className="h-5 w-5 text-blue-600" />
             <h3 className="text-xl font-bold">General Information</h3>
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="name" className="text-sm font-semibold ml-1">Product Name</Label>
-            <Input 
-              id="name" 
+            <Input
+              id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Premium Cotton T-Shirt" 
+              placeholder="e.g. Premium Cotton T-Shirt"
               className="h-12 rounded-2xl bg-slate-50 dark:bg-white/5 border-border/50"
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="description" className="text-sm font-semibold ml-1">Description</Label>
-            <Textarea 
-              id="description" 
+            <Textarea
+              id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Tell your customers about this product..."
@@ -204,11 +204,11 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
               <Hash className="h-5 w-5 text-blue-600" />
               <h3 className="text-xl font-bold">Variants & Inventory</h3>
             </div>
-            <Button 
-              type="button" 
+            <Button
+              type="button"
               onClick={handleAddVariant}
-              variant="outline" 
-              size="sm" 
+              variant="outline"
+              size="sm"
               className="rounded-xl border-blue-600/20 text-blue-600 hover:bg-blue-600/5"
             >
               <Plus className="h-4 w-4 mr-1" />
@@ -221,7 +221,7 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
               <div key={index} className="flex flex-wrap md:flex-nowrap items-end gap-4 p-5 rounded-3xl bg-slate-50 dark:bg-white/5 border border-border/30 relative group">
                 <div className="flex-1 space-y-2 min-w-[120px]">
                   <Label className="text-[10px] uppercase tracking-widest font-bold opacity-50 ml-1">SKU</Label>
-                  <Input 
+                  <Input
                     value={variant.sku}
                     onChange={(e) => updateVariant(index, "sku", e.target.value)}
                     placeholder="TSHIRT-RED-S"
@@ -232,7 +232,7 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
                   <Label className="text-[10px] uppercase tracking-widest font-bold opacity-50 ml-1">Price (Cents)</Label>
                   <div className="relative">
                     <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground" />
-                    <Input 
+                    <Input
                       type="number"
                       value={variant.price}
                       onChange={(e) => updateVariant(index, "price", parseInt(e.target.value) || 0)}
@@ -242,7 +242,7 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
                 </div>
                 <div className="w-full md:w-28 space-y-2">
                   <Label className="text-[10px] uppercase tracking-widest font-bold opacity-50 ml-1">Stock</Label>
-                  <Input 
+                  <Input
                     type="number"
                     value={variant.stock_quantity}
                     onChange={(e) => updateVariant(index, "stock_quantity", parseInt(e.target.value) || 0)}
@@ -250,15 +250,15 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
                   />
                 </div>
                 <div className="flex items-center h-10 mb-0.5 px-2">
-                   <Switch 
+                  <Switch
                     checked={variant.is_active}
                     onCheckedChange={(checked) => updateVariant(index, "is_active", checked)}
-                   />
+                  />
                 </div>
-                <Button 
+                <Button
                   type="button"
-                  variant="ghost" 
-                  size="icon" 
+                  variant="ghost"
+                  size="icon"
                   onClick={() => handleRemoveVariant(index)}
                   className="h-10 w-10 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-xl"
                 >
@@ -278,13 +278,13 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
               <h3 className="font-bold">Status</h3>
               <p className="text-xs text-muted-foreground">Visible in storefront</p>
             </div>
-            <Switch 
+            <Switch
               checked={isActive}
               onCheckedChange={setIsActive}
             />
           </div>
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full h-12 rounded-2xl bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/20 font-bold"
             disabled={isLoading}
           >
@@ -302,11 +302,11 @@ export function ProductForm({ product, tags, storeId, isNew }: ProductFormProps)
         {/* Media */}
         <div className="glass-card p-8 rounded-[2.5rem] bg-white dark:bg-[#12141c] border border-border/50 shadow-sm space-y-4">
           <h3 className="font-bold">Product Media</h3>
-          <ImageUploader 
-            storeId={storeId} 
-            productId={tempId} 
+          <ImageUploader
+            storeId={storeId}
+            productId={tempId}
             initialImages={imageUrls}
-            onImagesChange={setImageUrls} 
+            onImagesChange={setImageUrls}
           />
         </div>
 

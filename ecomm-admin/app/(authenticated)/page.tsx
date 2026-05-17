@@ -1,4 +1,3 @@
-import { Sidebar } from "@/components/sidebar";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { products, orders } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
@@ -20,7 +19,6 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen bg-muted/40">
-      <Sidebar />
       <main className="flex-1 flex flex-col overflow-hidden">
         <header className="h-16 border-b bg-card flex items-center justify-between px-8">
           <h1 className="text-lg font-bold">Dashboard</h1>
@@ -99,7 +97,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="text-right">
                       <p className="font-bold text-sm">${product.price}</p>
-                      <p className="text-xs text-muted-foreground">{product.stock_quantity} in stock</p>
+                      <p className="text-xs text-muted-foreground">{product.stock} in stock</p>
                     </div>
                   </div>
                 ))}

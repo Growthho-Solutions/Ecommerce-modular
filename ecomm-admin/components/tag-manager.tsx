@@ -4,14 +4,14 @@ import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Plus, 
-  Tag as TagIcon, 
-  Trash2, 
+import {
+  Plus,
+  Tag as TagIcon,
+  Trash2,
   Search,
   Hash
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 
 interface Tag {
@@ -27,7 +27,7 @@ export function TagManager({ initialTags, storeId }: { initialTags: Tag[], store
   const [searchQuery, setSearchQuery] = useState("");
   const supabase = createClient();
 
-  const filteredTags = tags.filter(tag => 
+  const filteredTags = tags.filter(tag =>
     tag.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -77,16 +77,16 @@ export function TagManager({ initialTags, storeId }: { initialTags: Tag[], store
         <form onSubmit={handleAddTag} className="flex gap-2">
           <div className="relative flex-1">
             <Plus className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input 
-              placeholder="Add new tag (e.g. Summer Collection)" 
+            <Input
+              placeholder="Add new tag (e.g. Summer Collection)"
               value={newTagName}
               onChange={(e) => setNewTagName(e.target.value)}
               className="pl-10 h-12 rounded-2xl bg-white dark:bg-[#12141c] border-border/50"
               disabled={isAdding}
             />
           </div>
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             disabled={isAdding || !newTagName.trim()}
             className="h-12 px-6 rounded-2xl bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/20"
           >
@@ -96,8 +96,8 @@ export function TagManager({ initialTags, storeId }: { initialTags: Tag[], store
 
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input 
-            placeholder="Filter tags..." 
+          <Input
+            placeholder="Filter tags..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 h-12 rounded-2xl bg-white dark:bg-[#12141c] border-border/50"
@@ -115,8 +115,8 @@ export function TagManager({ initialTags, storeId }: { initialTags: Tag[], store
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {filteredTags.map((tag) => (
-              <div 
-                key={tag.id} 
+              <div
+                key={tag.id}
                 className="group flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-transparent hover:border-blue-500/30 hover:bg-blue-500/5 transition-all"
               >
                 <div className="flex items-center gap-3">
@@ -125,7 +125,7 @@ export function TagManager({ initialTags, storeId }: { initialTags: Tag[], store
                   </div>
                   <span className="font-bold text-sm tracking-tight">{tag.name}</span>
                 </div>
-                <button 
+                <button
                   onClick={() => handleDeleteTag(tag.id)}
                   className="p-2 rounded-lg text-muted-foreground hover:text-red-500 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all"
                   title="Delete tag"

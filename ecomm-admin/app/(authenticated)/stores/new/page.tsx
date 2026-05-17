@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowRight, Building2, Mail, Coins, Loader2, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/toast";
 import Link from "next/link";
 
 export default function NewStorePage() {
@@ -15,7 +15,7 @@ export default function NewStorePage() {
     event.preventDefault();
     setIsLoading(true);
     const formData = new FormData(event.currentTarget);
-    
+
     const result = await createStore(formData);
     if (result?.error) {
       toast.error(result.error);
@@ -39,10 +39,10 @@ export default function NewStorePage() {
             <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Store Name</label>
             <div className="relative">
               <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <Input 
-                name="name" 
-                required 
-                placeholder="e.g. Modern Boutique" 
+              <Input
+                name="name"
+                required
+                placeholder="e.g. Modern Boutique"
                 className="pl-12 h-14 rounded-2xl bg-slate-50 dark:bg-black/20 border-transparent focus:bg-white dark:focus:bg-black/40 transition-all"
               />
             </div>
@@ -53,11 +53,11 @@ export default function NewStorePage() {
               <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Support Email</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input 
-                  name="supportEmail" 
-                  type="email" 
-                  required 
-                  placeholder="support@store.com" 
+                <Input
+                  name="supportEmail"
+                  type="email"
+                  required
+                  placeholder="support@store.com"
                   className="pl-12 h-14 rounded-2xl bg-slate-50 dark:bg-black/20 border-transparent focus:bg-white dark:focus:bg-black/40 transition-all"
                 />
               </div>
@@ -67,10 +67,10 @@ export default function NewStorePage() {
               <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Base Currency</label>
               <div className="relative">
                 <Coins className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input 
-                  name="baseCurrency" 
-                  required 
-                  placeholder="USD" 
+                <Input
+                  name="baseCurrency"
+                  required
+                  placeholder="USD"
                   defaultValue="USD"
                   className="pl-12 h-14 rounded-2xl bg-slate-50 dark:bg-black/20 border-transparent focus:bg-white dark:focus:bg-black/40 transition-all"
                 />
@@ -83,8 +83,8 @@ export default function NewStorePage() {
           <Link href="/stores">
             <Button type="button" variant="ghost" className="h-16 px-8 rounded-2xl font-bold">Cancel</Button>
           </Link>
-          <Button 
-            disabled={isLoading} 
+          <Button
+            disabled={isLoading}
             className="flex-1 h-16 rounded-2xl bg-blue-600 hover:bg-blue-500 font-black text-sm uppercase tracking-widest shadow-xl shadow-blue-500/20 group"
           >
             {isLoading ? (

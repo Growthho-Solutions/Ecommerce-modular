@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
@@ -12,12 +11,6 @@ export const metadata: Metadata = {
   title: "Premium E-commerce Boilerplate",
   description: "A high-performance, modular e-commerce store built with Next.js and Supabase.",
 };
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -35,7 +28,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased bg-white dark:bg-[#0a0a0a]`}>
+      <body className={`antialiased bg-white dark:bg-[#0a0a0a]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
